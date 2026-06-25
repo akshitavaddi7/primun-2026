@@ -178,6 +178,12 @@ padding:25px;
 .hero h1{font-size:3rem}
 nav ul{display:none}
 }
+  #countdown{
+font-size:2.5rem;
+font-weight:800;
+letter-spacing:2px;
+margin:20px 0;
+}
 </style>
 </head>
 <body>
@@ -278,7 +284,11 @@ craft innovative resolutions, and develop diplomacy, public speaking, and negoti
 
 <section class="countdown" id="register">
 <h2 class="title" style="color:white">Registration</h2>
-<p>Registrations Opening Soon</p><br>
+<p>Registrations Opening Soon</p>
+  <h3 id="countdown">Loading Countdown...</h3><br>
+<h3 id="countdown" style="font-size:2rem;margin:20px 0;">
+Loading Countdown...
+</h3>
 <a class="btn" href="javascript:void(0)">Apply Now</a>
 </section>
 
@@ -301,6 +311,30 @@ craft innovative resolutions, and develop diplomacy, public speaking, and negoti
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 AOS.init({duration:1000});
+</script>
+  <script>
+const eventDate = new Date("July 24, 2026 08:00:00").getTime();
+
+const countdown = setInterval(function() {
+
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML =
+            "PRIMUN 2026 HAS BEGUN!";
+    }
+
+}, 1000);
 </script>
 
 </body>
